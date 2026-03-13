@@ -39,5 +39,6 @@ func addRun(cmd *cobra.Command, args []string) {
 		items = append(items,
 			todo.Item{Text: x})
 	}
+	todo.SaveItems("x", items)
 	fmt.Printf("%#v\n", items)
 }
