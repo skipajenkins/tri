@@ -26,6 +26,9 @@ func SaveItems(filename string, items []Item) error {
 
 func ReadItems(filename string) ([]Item, error) {
 	b, err := ioutil.ReadFile(filename)
+	if err != nil {
+		return []Item{}, err
+	}
 	var items []Item
 	if err := json.Unmarshal(b, &items); err != nil {
 		return []Item{}, err
