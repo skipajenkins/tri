@@ -36,21 +36,14 @@ func addRun(cmd *cobra.Command, args []string) {
 	fmt.Println("add called")
 	// items := []todo.Item{}
 	// items, err := todo.ReadItems("github.com/skipajenkins/.tridos.json")
-
 	items, err := todo.ReadItems(dataFile)
 	if err != nil {
 		fmt.Printf("%v\n", err)
 	}
-
+	err = todo.SaveItems(dataFile, items)
 	for _, x := range args {
 		items = append(items,
 			todo.Item{Text: x})
 	}
-
-	err = todo.SaveItems(dataFile, items)
-	if err != nil {
-		fmt.Printf("%v\n", err)
-	}
-
-	fmt.Printf("%#v\n", items)
+	// fmt.Printf("%#v\n", items)
 }
