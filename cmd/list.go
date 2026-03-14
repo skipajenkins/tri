@@ -14,8 +14,8 @@ import (
 // listCmd represents the list command
 var listCmd = &cobra.Command{
 	Use:   "list",
-	Short: "it will list things to do",
-	Long:  `it uses the ReadItem function to read from a hidden json file.`,
+	Short: "List to-dos",
+	Long:  `List will display your to-dos.`,
 	Run:   listItem,
 }
 
