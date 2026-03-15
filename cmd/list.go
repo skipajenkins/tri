@@ -16,7 +16,7 @@ var listCmd = &cobra.Command{
 	Use:   "list",
 	Short: "List to-dos",
 	Long:  `List will display your to-dos.`,
-	Run:   listItem,
+	Run:   listRun,
 }
 
 func init() {
@@ -33,7 +33,7 @@ func init() {
 	// listCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
 
-func listItem(cmd *cobra.Command, args []string) {
+func listRun(cmd *cobra.Command, args []string) {
 	fmt.Println("list called")
 	// items, err := todo.ReadItems("github.com/skipajenkins/.tridos.json")
 	items, err := todo.ReadItems(dataFile)
