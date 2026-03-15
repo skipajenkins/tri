@@ -37,7 +37,7 @@ func ReadItems(filename string) ([]Item, error) {
 	return items, nil
 }
 
-func SetPriority(i *Item) (pri int) {
+func (i *Item) SetPriority(pri int) {
 	switch pri {
 	case 1:
 		i.Priority = 1

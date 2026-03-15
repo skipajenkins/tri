@@ -38,7 +38,7 @@ func listItem(cmd *cobra.Command, args []string) {
 	// items, err := todo.ReadItems("github.com/skipajenkins/.tridos.json")
 	items, err := todo.ReadItems(dataFile)
 	if err != nil {
-		log.Printf("%v", err)
+		log.Printf("%v/n", err)
 	}
 	fmt.Println(items)
 }

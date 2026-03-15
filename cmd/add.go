@@ -14,13 +14,17 @@ import (
 var addCmd = &cobra.Command{
 	Use:   "add",
 	Short: "Add a new todo",
-	Long:  `Add will create a new todo item to the list`,
+	Long:  `Add will create a new todo item on list`,
 	Run:   addRun,
 }
+
+var priority int
 
 func init() {
 	rootCmd.AddCommand(addCmd)
 
+	addCmd.Flags().IntVarP(&priority,
+		"priority", "p", 2, "Priority:1,2,3")
 	// Here you will define your flags and configuration settings.
 
 	// Cobra supports Persistent Flags which will work for this command
@@ -42,8 +46,11 @@ func addRun(cmd *cobra.Command, args []string) {
 	}
 	err = todo.SaveItems(dataFile, items)
 	for _, x := range args {
-		items = append(items,
-			todo.Item{Text: x})
+		item := todo.Item{Text: x}
+		item.SetPriority(priority)
+		items = append(items, item)
+		// items = append(items,
+		//	todo.Item{Text: x})
 	}
 	// fmt.Printf("%#v\n", items)
 }
