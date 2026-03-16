@@ -11,6 +11,7 @@ type Item struct {
 	Text     string
 	Priority int
 	position int
+	Done     bool
 }
 
 type ByPri []Item
