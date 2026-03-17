@@ -11,6 +11,7 @@ import (
 
 	"github.com/skipajenkins/tri/todo"
 	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
 )
 
 // doneCmd represents the done command
@@ -52,4 +53,6 @@ func doneRun(cmd *cobra.Command, args []string) {
 	} else {
 		log.Println(i, "doesn't match any items")
 	}
+
+	todo.SaveItems(viper.GetString("datafile"), items)
 }

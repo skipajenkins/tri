@@ -12,6 +12,7 @@ import (
 
 	"github.com/skipajenkins/tri/todo"
 	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
 )
 
 var (
@@ -47,7 +48,7 @@ func init() {
 func listRun(cmd *cobra.Command, args []string) {
 	fmt.Println("list called")
 	// items, err := todo.ReadItems("github.com/skipajenkins/.tridos.json")
-	items, err := todo.ReadItems(dataFile)
+	items, err := todo.ReadItems(viper.GetString("dataFile"))
 	if err != nil {
 		log.Printf("%v/n", err)
 	}

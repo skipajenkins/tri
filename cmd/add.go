@@ -8,6 +8,7 @@ import (
 
 	"github.com/skipajenkins/tri/todo"
 	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
 )
 
 // addCmd represents the add command
@@ -40,7 +41,7 @@ func addRun(cmd *cobra.Command, args []string) {
 	fmt.Println("add called")
 	// items := []todo.Item{}
 	// items, err := todo.ReadItems("github.com/skipajenkins/.tridos.json")
-	items, err := todo.ReadItems(dataFile)
+	items, err := todo.ReadItems(viper.GetString("dataFile"))
 	if err != nil {
 		fmt.Printf("%v\n", err)
 	}
@@ -52,6 +53,8 @@ func addRun(cmd *cobra.Command, args []string) {
 		//	todo.Item{Text: x})
 	}
 
-	err = todo.SaveItems(dataFile, items)
-	// fmt.Printf("%#v\n", items)
+	if err := todo.SaveItems(dataFile, items); err != nil {
+		err = todo.SaveItems(dataFile, items)
+		// fmt.Printf("%#v\n", items)
+	}
 }
