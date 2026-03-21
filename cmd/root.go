@@ -69,4 +69,10 @@ func initConfig() {
 	viper.SetConfigName(".tri")
 	viper.AddConfigPath("$HOME")
 	viper.AutomaticEnv()
+	viper.SetEnvPrefix("tri")
+
+	// if a config file is found, read it in.
+	if err := viper.ReadInConfig(); err == nil {
+		fmt.Println("Using config file:", viper.ConfigFileUsed())
+	}
 }
